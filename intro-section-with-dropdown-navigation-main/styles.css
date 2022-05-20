@@ -1,0 +1,459 @@
+:root {
+    font-size: 62.5%;
+    user-select: none;
+}
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Epilogue', sans-serif;
+}
+
+body {
+    padding: 2rem;
+    font-size: 1.5rem;
+    overflow: hidden;
+}
+
+header,
+.nav--menus,
+.nav--auth {
+
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+
+}
+
+.navigation {
+    display: flex;
+    align-items: baseline;
+    padding: 0 1rem;
+    flex-grow: 1;
+    background: rgb(255, 255, 255);
+    z-index: 20;
+}
+
+.nav--menus {
+    width: auto;
+    flex-grow: 1;
+}
+
+.nav--auth {
+    width: 20%;
+    justify-content: space-around;
+    padding: 1rem;
+    font-weight: 700;
+}
+
+
+header {
+
+    margin-bottom: 5rem;
+    color: hsl(0, 0%, 41%);
+    z-index: 500;
+    background: rgb(255, 255, 255);
+}
+
+.header--logo {
+    color: black;
+    padding: 0 1rem;
+    margin-right: 3rem;
+    font-size: xx-large;
+    cursor: pointer;
+
+}
+
+.menu {
+
+    position: relative;
+    padding: 5px;
+    margin: 10px;
+    cursor: pointer;
+
+
+}
+
+.menu-text {
+    font-weight: 700;
+    padding-right: 7px;
+}
+
+.menu-text:hover {
+    color: black;
+}
+
+.feature-box,
+.company-box {
+    display: none;
+    font-size: 1.3rem;
+    position: absolute;
+    top: 50px;
+    width: max-content;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-weight: 500;
+    border-radius: 1rem;
+    box-shadow: 10px 10px 50px hsl(0, 0%, 90%), -10px 0 50px hsl(0, 0%, 90%);
+    overflow: hidden;
+    transform: translateY(-50px);
+    transition: all 1s;
+}
+
+.feature-box {
+    left: -5rem;
+
+}
+
+
+@keyframes anim {
+    0% {
+        opacity: 0;
+        height: 0;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+
+    }
+}
+
+.options {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-self: baseline;
+    padding: 1rem 2rem;
+    width: 100%;
+}
+
+.options:first-child {}
+
+
+
+
+.options img {
+    padding-right: 1.5rem;
+
+}
+
+.options:hover {
+    background-color: hsl(0, 0%, 90%);
+}
+
+
+.login {
+    cursor: pointer;
+}
+
+.login:hover,
+.register:hover {
+    color: black;
+}
+
+.register:hover {
+    border: 2px solid hsl(0, 0%, 0%);
+}
+
+.register {
+
+    border: 2px solid hsl(0, 0%, 41%);
+    border-radius: 15px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: all 0.5s;
+    margin-left: 2rem;
+}
+
+main {
+    width: 82%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2rem;
+    height: 70vh;
+}
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: space-around;
+    padding: 1rem;
+    align-items: baseline;
+}
+
+.intro-hero {
+    width: 50%;
+    height: auto;
+
+    background: url('./images/image-hero-desktop.png') no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.intro-hero-mobile{
+    display: none;
+}
+
+
+.intro-title {
+    font-weight: 700;
+    font-size: 7.2rem;
+    margin-top: 9rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.desc {
+    font-size: 1.8rem;
+}
+
+.more {
+    padding: 1rem 2rem;
+    background: black;
+    color: white;
+    width: fit-content;
+    border-radius: 1rem;
+    border: 1px solid black;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.more:hover {
+    background: white;
+    color: black;
+}
+
+.clients {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.clients img {
+    height: fit-content;
+    padding-left: 10px;
+    width: 70px;
+}
+
+
+.sidebar-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    padding: 10px;
+    display: none;
+    place-items: center;
+    
+    cursor: pointer;
+    z-index: 20;
+}
+
+@Keyframes sidebarAnim{
+0%{
+    opacity: 0;
+}
+100%{
+    opacity: 1;
+    right: 0;
+}
+}
+
+
+@media only screen and (max-width: 1124px) {
+
+    :root {
+        font-size: 57.5%;
+    }
+
+    .intro-title {
+        font-size: 6rem;
+
+    }
+
+    .clients img {
+        width: 60px;
+
+    }
+}
+
+@media only screen and (max-width: 960px) {
+
+    :root {
+        font-size: 52.5%;
+    }
+
+    .intro-title {
+        font-size: 5rem;
+
+    }
+
+    .clients {
+        width: 60%;
+    }
+
+    .clients img {
+
+        width: 50px;
+
+    }
+
+}
+
+@media only screen and (max-width: 680px) {
+    :root {
+        font-size: 50%;
+    }
+
+    .intro-title {
+        font-size: 4rem;
+
+    }
+
+
+}
+
+@media only screen and (max-width: 640px) {
+    .navigation {
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        align-items: flex-start;
+        padding: 2rem;
+        width: 200px;
+       display: none;
+        padding-top: 70px;
+        transition: all 0.5s;
+    }
+
+    .nav--auth,
+    .nav--menus {
+        flex-direction: column;
+        width: 100%;
+        flex-grow: 0;
+        padding: 0;
+    }
+
+
+    .nav--menus {
+        align-items: flex-start;
+    }
+
+    .nav--auth {
+        align-items: center;
+    }
+
+    .nav--auth div {
+        margin: 1rem 0;
+        text-align: center;
+    }
+
+    .register {
+        width: 90%;
+    }
+
+
+    .feature-box,
+    .company-box {
+        position: initial;
+        background: none;
+        box-shadow: none;
+
+        font-size: inherit;
+        border-radius: 0;
+        margin: 2rem 0 1rem 0;
+    }
+
+
+    .options:hover {
+        background: none;
+    }
+
+
+    .menu {
+        width: inherit;
+        margin-bottom: 0;
+
+    }
+
+    .sidebar-btn{
+        display: grid;
+    }
+
+    .intro-hero{
+        display: none;
+    }
+    .intro-hero-mobile{
+        display:block;
+        height: 40%;
+        width:min-content;
+        
+
+    }
+    main{
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        height: 80vh;
+    }
+    .intro{
+        width: 100%;
+        flex-grow: 1;
+        align-items: center;
+    }
+    .intro-title{
+        margin-top: 0;
+        font-size: 5rem;
+        flex-direction: row;
+    }
+    .desc{
+        text-align: center;
+    }
+
+    .clients{
+        width: fit-content;
+    }
+    .clients img{
+        width: 65px;
+    }
+
+   
+}
+
+@media only screen and (max-width: 555px) {
+
+    .intro-title{
+        font-size: 3rem;
+    }
+}
+
+
+#modal{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 100vh;
+    background: hsla(0, 0%, 20%, 0.837);
+    display: none;
+}
