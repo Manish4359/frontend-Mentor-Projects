@@ -1,0 +1,343 @@
+:root {
+    font-size: 62.5%;
+    font-family: 'rubik', sans-serif;
+    ;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+    margin: 2rem;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+body {
+    background: hsl(228, 33%, 97%);
+    position: relative;
+}
+
+.comments-container {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    margin: auto;
+    padding: 20px;
+    width: 60%;
+}
+
+.comment {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-comment,
+.currentuser {
+    display: flex;
+    padding: 1rem;
+    background: rgb(255, 255, 255);
+    justify-content: space-evenly;
+    border-radius: 15px;
+    margin: 2rem;
+}
+
+.currentuser {
+    grid-column: 2/-1;
+    position: sticky;
+    z-index: 0;
+    bottom: 13px;
+    outline: 5px solid hsl(228, 33%, 97%);
+    place-self: stretch;
+}
+
+.user-replys {
+    display: grid;
+    grid-template-columns: 70px auto;
+    justify-items: center;
+}
+
+.reply {
+    grid-column: 2 / -1;
+    box-sizing: border-box;
+    place-self: stretch;
+}
+
+.bar {
+    width: 2px;
+    background: hsl(0, 0%, 90%);
+    grid-column: 1 / 2;
+    grid-row: 1 / span 500;
+    margin: 2rem;
+    justify-self: end;
+}
+
+/*
+grid-area: 1 / 1 / -1 / 2;
+.user-comment::before {
+    position: absolute;
+    content: " ";
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+}*/
+
+
+
+.comment-vote {
+    background: hsl(228, 33%, 97%);
+    width: auto;
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+    height: fit-content;
+}
+
+
+
+.vote-count {
+    color: hsl(238, 40%, 52%);
+    font-weight: 900;
+    padding: 8px 0;
+}
+
+.upvote,
+.downvote {
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.comment-details {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.4rem;
+    flex-grow: 1;
+    width: 75%;
+}
+
+.comment-heading {
+    display: flex;
+
+    padding: 0.5rem 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.comment-date {
+    flex-grow: 1;
+    padding: 0 1rem;
+}
+
+.comment-description {
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    width: auto;
+
+}
+
+.comment-actions {
+    display: flex;
+
+}
+
+.comment-actions div {
+    padding: 0 1rem;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.comment-delete,
+.comment-edit {
+    display: none;
+}
+
+.comment-delete {
+    color: hsl(0, 100%, 70%);
+}
+
+.comment-edit,
+.comment-reply {
+    color: hsl(238, 40%, 52%);
+    ;
+}
+
+.user {
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+
+}
+
+.username {
+    padding: 1rem;
+}
+
+.user img {
+    width: 30px;
+}
+
+.currentuser {
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.currentuser img {
+    width: 30px;
+    height: fit-content;
+}
+
+.currentuser-comment {
+    height: 7rem;
+    width: 30rem;
+    padding: 1rem;
+    margin: 0 1rem;
+    border-radius: 5px;
+    border: 1px solid hsl(228, 33%, 97%);
+    flex-grow: 1;
+    color: hsl(211, 10%, 45%);
+    font-size: 1.5rem;
+    resize: none;
+}
+
+.comment-send,
+.currentuser-reply,
+.comment-update {
+    background: hsl(238, 40%, 52%);
+    padding: 1rem 2rem;
+    font-size: 1.6rem;
+    color: white;
+    border-radius: 10px;
+    justify-self: end;
+    cursor: pointer;
+}
+
+.comment-update {
+    align-self: flex-end;
+}
+
+.delete-modal {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background: hsla(0, 0%, 55%, 0.505);
+    display: none;
+    place-items: center;
+    z-index: 20;
+}
+
+.confirm-delete {
+
+    display: flex;
+    background: white;
+    flex-direction: column;
+    padding: 2rem;
+    width: 25rem;
+    border-radius: 10px;
+
+
+}
+
+.confirm-delete p {
+    margin: 1.5rem 0;
+    padding: 1rem 0;
+    font-size: 1.2rem;
+}
+
+.confirm-delete h2 {
+    font-weight: 700;
+}
+
+.delete-action {
+    display: flex;
+    justify-content: space-between;
+}
+
+.delete-action div {
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.delete-no {
+    background: hsl(0, 0%, 50%);
+}
+
+.delete-yes {
+    background: hsl(358, 79%, 66%)
+}
+
+#you {
+    padding: 0.3rem;
+    background: hsl(238, 40%, 52%);
+    color: white;
+    margin: 0 .5rem;
+    font-size: 1.2rem;
+
+}
+
+.comment-delete:active,
+.comment-reply:active,
+.comment-edit:active,
+.comment-send:active,
+.comment-update:active {
+    opacity: 0.4;
+}
+
+@media only screen and (max-width: 1024px) {
+    .comments-container {
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 870px) {
+    :root{
+        font-size: 56%;
+    }
+    .comments-container {
+        width: 80%;
+    }
+}
+@media only screen and (max-width: 762px) {
+    :root{
+        font-size: 55%;
+    }
+    .comments-container {
+        width: 85%;
+    }
+}
+@media only screen and (max-width: 680px) {
+
+    :root{
+        font-size: 50%;
+    }
+    .comments-container {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+
+    :root{
+        font-size: 50%;
+    }
+    .comments-container {
+        width: 90%;
+    }
+}
