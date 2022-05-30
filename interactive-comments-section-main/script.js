@@ -26,20 +26,21 @@ xhttp.onload = () => {
             ${html}
           </div>`;
 
-      const commentCont = document.createElement('div');
+      const userCommentAndReplys = document.createElement('div');
 
-      commentCont.classList.add('comment');
+      userCommentAndReplys.classList.add('comment');
 
-      commentCont.insertAdjacentHTML('beforeend', userCommentMarkup);
+      userCommentAndReplys.insertAdjacentHTML('beforeend', userCommentMarkup);
 
-      const replys = document.createElement('div');
+      let replys = document.createElement('div');
+      replys.classList.add('user-replys');
+      replys.insertAdjacentHTML('afterbegin', `<div class="bar"></div>`);
       if (comment.replies.length !== 0) {
 
         comment.replies.forEach((reply) => {
 
           html = commentMarkup(reply, currentUser.username, comment.user.username);
 
-          replys.classList.add('user-replys');
 
           replys.insertAdjacentHTML('beforeend', `         
           
@@ -48,11 +49,10 @@ xhttp.onload = () => {
                 </div>
               ` );
         })
-        replys.insertAdjacentHTML('afterbegin', `<div class="bar"></div>`);
-        commentCont.insertAdjacentElement('beforeend', replys)
       }
+      userCommentAndReplys.insertAdjacentElement('beforeend', replys)
 
-      commentContainer.insertAdjacentElement('beforeend', commentCont)
+      commentContainer.insertAdjacentElement('beforeend', userCommentAndReplys)
 
 
     })
@@ -154,10 +154,7 @@ function commentEvents(elem) {
   if (elem.classList.contains('comment-reply') || elem.closest('.comment-reply')) {
 
     const parentComment = elem.closest('.user-comment');
-
-
-
-
+    console.log(parentComment.closest('.comment'))
     const replyToUser = parentComment.querySelector('.username').innerText;
 
     const currentUserReplyMarkup = `
@@ -167,12 +164,14 @@ function commentEvents(elem) {
         <div class="currentuser-reply">Reply</div>
         </div>`
 
-    parentComment.insertAdjacentHTML('afterend', currentUserReplyMarkup);
+    console.log(parentComment);
+    const userReplysContainer=parentComment.closest('.comment').querySelector('.user-replys');
+    userReplysContainer.insertAdjacentHTML('afterbegin', currentUserReplyMarkup);
 
     parentComment.querySelector('.comment-reply').style.display = 'none';
 
 
-    replyComment(parentComment, parentComment.querySelector('.comment-reply'), replyToUser);
+    replyComment(userReplysContainer, parentComment.querySelector('.comment-reply'), replyToUser);
 
   }
 
@@ -225,7 +224,7 @@ function commentEvents(elem) {
 function replyComment(elem, replyBtn, replyToUser) {
 
 
-  elem.nextElementSibling.addEventListener('click', function send(e) {
+  elem.querySelector('.currentuser').addEventListener('click', function send(e) {
 
     if (e.target.classList.contains('currentuser-reply')) {
       let commentContent = e.currentTarget.querySelector('.currentuser-comment').value;
@@ -249,11 +248,13 @@ function replyComment(elem, replyBtn, replyToUser) {
       </div>
 
     `
-      elem.insertAdjacentHTML('afterend', markup);
+    console.log(elem)
+      elem.insertAdjacentHTML('afterbegin', markup);
       e.currentTarget.remove();
       replyBtn.style.display = 'block';
 
     }
+    
   })
 }
 
